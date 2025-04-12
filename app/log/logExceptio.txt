@@ -1,0 +1,7 @@
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_alumnos.alumnos' doesn't exist0.23934600 1744386222
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'gestion_alumnos.alumnos' doesn't exist0.32208500 1744386369
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'contraseña' in 'field list'0.81731600 1744391130
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gestion_alumnos`.`usuarios_asignaturas`, CONSTRAINT `usuarios_asignaturas_ibfk_2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignaturas` (`id_asignatura`) ON DELETE CASCADE)0.91308300 1744391290
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ffc@gmail.es' for key 'email'0.61790900 1744391627
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ffc@gmail.es' for key 'email'0.06237900 1744391766
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'f' for key 'usuario'0.25500600 1744391814
