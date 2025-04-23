@@ -2,7 +2,7 @@
 /*ponemos las diferentes funciones que se utilizarán para interactuar con la BD. */
 
 class Usuarios extends Modelo {
-/*
+/*   no uso esta función, porque no devuelve el id del usuario insertado
     public function insertarUsuario($nombre, $apellidos, $email, $telefono, $centro_estudios, $usuario, $contrasenya, $nivel_usuario = 1) {
         $sql = "INSERT INTO usuarios (nombre, apellidos, email, telefono, centro_estudios, usuario, contrasenya, nivel_usuario)
                 VALUES (:nombre, :apellidos, :email, :telefono, :centro_estudios, :usuario, :contrasenya, :nivel_usuario)";
@@ -45,11 +45,6 @@ public function insertarAsignaturaAlumno($id_usuario, $id_asignatura) {
     $stmt->bindParam(':id_asignatura', $id_asignatura);
     return $stmt->execute();
 }
-
-
-
-
-
 
     /////////////////
     public function consultarUsuario($usuario) {

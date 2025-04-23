@@ -45,9 +45,9 @@ if (isset($params['mensaje'])) {
             <label for="confirmar_contrasenya">Confirmar contraseña:</label>
             <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya" required>
 
-            <!-- Grupo de checkboxes -->
+            <!-- Grupo de checkboxes DE MANUAL -->
                        
-
+<!--
             <label>Asignaturas:</label>
 <input type="checkbox" id="matematicas" name="asignaturas[]" value="1">
 <label for="matematicas">MATEMÁTICAS</label>
@@ -60,6 +60,17 @@ if (isset($params['mensaje'])) {
 
 <input type="checkbox" id="biologia" name="asignaturas[]" value="4">
 <label for="biologia">BIOLOGÍA</label>
+-->
+            <!-- Grupo de checkboxes DE DINAMICA -->
+
+            <label>Asignaturas:</label><br>
+<?php foreach ($params['asignaturas'] as $asignatura): ?>
+    <input type="checkbox" name="asignaturas[]" value="<?= $asignatura['id_asignatura'] ?>" 
+        <?= (isset($_POST['asignaturas']) && in_array($asignatura['id_asignatura'], $_POST['asignaturas'])) ? 'checked' : '' ?>>
+    <label for=""><?= htmlspecialchars($asignatura['nombre_asignatura']) ?></label><br>
+<?php endforeach; ?>
+
+
 
 
             <input type="submit" value="Aceptar" name="bRegistro">

@@ -15,6 +15,7 @@ class Asignaturas extends Modelo {
         $result = $this->conexion->query($consulta);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+    /*
     public function consultarAsignatura($id_asignatura) {
         $consulta = "SELECT * FROM asignaturas WHERE id_asignatura = :id_asignatura";
         $result = $this->conexion->prepare($consulta);
@@ -34,6 +35,9 @@ class Asignaturas extends Modelo {
         $result = $this->conexion->prepare($consulta);
         $result->bindParam(':id_asignatura', $id_asignatura);
         return $result->execute();
-    }
+    }*/
+
+
+    
 }
 ?>

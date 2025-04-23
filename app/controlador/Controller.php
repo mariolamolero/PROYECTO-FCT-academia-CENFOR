@@ -188,6 +188,14 @@ if (empty($asignaturas)) {
                 $params['mensaje'] = 'Hay datos que no son correctos. Revisa el formulario.';
             }
         }
+        //para que el checkbox sea dinamico
+        //inicializar el modelo de asignaturas y obtenerlas
+$mAsignaturas = new Asignaturas();
+$asignaturas = $mAsignaturas->listarAsignaturas();
+//guardarlas en el array $params para pasarlas a la vista
+$params['asignaturas'] = $asignaturas;
+
+
         //incluimos la vista del formulario
 
         require __DIR__ . '/../../web/templates/formRegistro.php';
