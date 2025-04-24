@@ -47,8 +47,20 @@ class Controller
 
         //según el nivel del usuario, se cargará un menú u otro.
         $menu = $this->cargaMenu();
+
+ // Redirige a la vista de asignaturas si es alumno
+ if ($_SESSION['nivel_usuario'] == 1) {
+    require __DIR__ . '/../../web/templates/vistaAsignaturas.php';
+    return;
+} else {
+    require __DIR__ . '/../../web/templates/inicio.php';
+  
+    return;
+}
+
         //incluimos la vista
-        require __DIR__ . '/../../web/templates/inicio.php';
+
+
     }
 
 
@@ -238,7 +250,14 @@ $params['asignaturas'] = $asignaturas;
                             $_SESSION['usuario'] = $usuario['usuario'];
                             $_SESSION['nivel_usuario'] = $usuario['nivel_usuario'];
 
-                            header('location:index.php?ctl=inicio');
+                           header('location:index.php?ctl=inicio');
+                          
+                          
+
+
+
+
+
                         }
                     } else {
 
