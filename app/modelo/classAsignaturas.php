@@ -38,6 +38,26 @@ class Asignaturas extends Modelo {
     }*/
 
 
+    //funcion para recuperar los bloques según la asignatura
+   /* public function obtenerBloques($id_asignatura) {
+        $consulta = "SELECT * FROM bloques WHERE id_asignatura = :id_asignatura";
+        $result = $this->conexion->prepare($consulta);
+        $result->bindParam(':id_asignatura', $id_asignatura, PDO::PARAM_INT);
+        $result->execute();
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+    */
+    public function obtenerBloquesPorAsignatura($nombreAsignatura) {
+        $sql = "SELECT b.nombre_bloque 
+                FROM bloques b
+                JOIN asignaturas a ON b.id_asignatura = a.id_asignatura
+                WHERE a.nombre_asignatura = :nombre_asignatura";
+    
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bindParam(':nombre_asignatura', $nombreAsignatura, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 ?>

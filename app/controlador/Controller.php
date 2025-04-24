@@ -50,6 +50,16 @@ class Controller
 
  // Redirige a la vista de asignaturas si es alumno
  if ($_SESSION['nivel_usuario'] == 1) {
+    $m = new Usuarios();
+
+    /*nuevo*/
+    $asignaturas = $m->obtenerAsignaturasUsuario($_SESSION['id_usuario']);
+
+    $params = [
+        'asignaturas' => $asignaturas
+    ];  /* hasta aqui*/  
+
+
     require __DIR__ . '/../../web/templates/vistaAsignaturas.php';
     return;
 } else {
@@ -87,14 +97,6 @@ class Controller
         if ($_SESSION['nivel_usuario'] > 0) {
             header("location:index.php?ctl=inicio");
         }
-
-        //NUEVO//
-        // Inicializar la clase Academia para obtener las asignaturas
-     /*   $m = new Asignaturas();
-        $asignaturas = $m->listarAsignaturas();
-      */  
-
-
         //iniciamos el array params
         $params = array(
             'nombre' => '',
@@ -246,6 +248,9 @@ $params['asignaturas'] = $asignaturas;
                         if (comprobarhash($contrasenya, $usuario['contrasenya'])) {
                             // Obtenemos el resto de datos. los datos del usuario estabán en $usuario y ahora los tenemos en $_Session
 
+
+
+                            
                             $_SESSION['id_usuario'] = $usuario['id_usuario'];
                             $_SESSION['usuario'] = $usuario['usuario'];
                             $_SESSION['nivel_usuario'] = $usuario['nivel_usuario'];
@@ -301,4 +306,40 @@ $params['asignaturas'] = $asignaturas;
 
         header("location:index.php?ctl=home");
     }
+  
+    public function verBloques() {
+        try {
+            if (!isset($_GET['asignatura'])) {
+                throw new Exception("No se especificó ninguna asignatura.");
+            }
+    
+            $nombreAsignatura = $_GET['asignatura'];
+    
+            $m = new Asignaturas();
+            $bloques = $m->obtenerBloquesPorAsignatura($nombreAsignatura);
+    
+            $params = array(
+                'bloques' => $bloques,
+                'asignatura' => $nombreAsignatura
+            );
+    
+            if (empty($bloques)) {
+                $params['mensaje'] = "No hay bloques disponibles para esta asignatura.";
+            }
+    
+        } catch (Exception $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logException.txt");
+            header('Location: index.php?ctl=error');
+            exit;
+        } catch (Error $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logError.txt");
+            header('Location: index.php?ctl=error');
+            exit;
+        }
+    
+        $menu = $this->cargaMenu();
+        extract($params);
+        require __DIR__ . '/../../web/templates/mostrarBloques.php';
+    }
+    
 }

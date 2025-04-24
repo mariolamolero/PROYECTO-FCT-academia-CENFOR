@@ -36,16 +36,22 @@ $map = array(
     'quimica' => array('controller' => 'Controller', 'action' => 'quimica', 'nivel_usuario'=>1),  
     'fisica' => array('controller' => 'Controller', 'action' => 'fisica', 'nivel_usuario'=>1),  
     'biologia' => array('controller' => 'Controller', 'action' => 'biologia', 'nivel_usuario'=>1),  
+    
+
+    'verBloques' => array('controller' => 'Controller', 'action' => 'verBloques', 'nivel_usuario'=>1),  
+    
+
 
 
     
     'salir' => array('controller' => 'Controller', 'action' => 'salir', 'nivel_usuario' => 1),
 
     'error' => array('controller' => 'Controller', 'action' => 'error', 'nivel_usuario' => 0),
+    'consultarUsuarios' => array('controller' => 'Controller', 'action' => 'consultarUsuarios', 'nivel_usuario' => 2),
+    'insertarRecurso' => array('controller' => 'Controller', 'action' => 'insertarRecurso', 'nivel_usuario' => 2)
     /*
     'listarRecursos' => array('controller' => 'Controller', 'action' => 'listarRecursos', 'nivel_usuario' => 0),
     'listarAsignatura' => array('controller' => 'Controller', 'action' => 'listarAsignatura', 'nivel_usuario' => 1),
-    'consultarUsuarios' => array('controller' => 'Controller', 'action' => 'consultarUsuarios', 'nivel_usuario' => 2),
 
     'setLanguage' => array('controller' => 'Controller', 'action' => 'setLanguage', 'nivel_usuario'=>1),
     'salir' => array('controller' => 'Controller', 'action' => 'salir', 'nivel_usuario' => 1),
@@ -56,7 +62,6 @@ $map = array(
     'insertarUsers' => array('controller' => 'Controller', 'action' => 'insertarUsers', 'nivel_usuario' => 2),
     'eliminarUsers' => array('controller' => 'Controller', 'action' => 'eliminarUsers', 'nivel_usuario' => 2),
     'modificarUsers' => array('controller' => 'Controller', 'action' => 'modificarUsers', 'nivel_usuario' => 2),
-    'insertarRecurso' => array('controller' => 'Controller', 'action' => 'insertarRecurso', 'nivel_usuario' => 2)
     */
 );
 

@@ -88,6 +88,17 @@ public function insertarAsignaturaAlumno($id_usuario, $id_asignatura) {
         $stmt->bindParam(':id_alumno', $id_usuario);
         return $stmt->execute();
     }
+//función que devuelve las asignaturas del usuario logueado
+public function obtenerAsignaturasUsuario($id_usuario) {
+    $consulta = "SELECT a.nombre_asignatura FROM asignaturas a
+                 INNER JOIN usuarios_asignaturas ua ON a.id_asignatura = ua.id_asignatura
+                 WHERE ua.id_usuario = :id_usuario";
+
+    $result = $this->conexion->prepare($consulta);
+    $result->bindParam(':id_usuario', $id_usuario);
+    $result->execute();
+    return $result->fetchAll(PDO::FETCH_COLUMN); // Devuelve un array de nombres
+}
 
 }
 
